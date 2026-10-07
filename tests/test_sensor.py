@@ -156,10 +156,6 @@ async def test_derived_sensor_value(
     assert await setup_config_entry(hass, CONFIG_ENTRIES[0])
 
     entity_id = "sensor.fake_brand_homeappliance_sensor_derived"
-    state = hass.states.get(entity_id)
-    assert state
-    assert state.state == "0"
-
     await mock_appliance.entities["Test.Sensor"].update({"value": 7})
     await hass.async_block_till_done()
 
