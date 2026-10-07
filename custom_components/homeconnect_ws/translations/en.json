@@ -470,6 +470,18 @@
       "sensor_elapsed_program_time": {
         "name": "Elapsed Program Time"
       },
+      "sensor_expected_finish_time": {
+        "name": "Expected Finish Time"
+      },
+      "sensor_last_program_start": {
+        "name": "Last Program Start"
+      },
+      "sensor_last_program_end": {
+        "name": "Last Program End"
+      },
+      "sensor_last_program_duration": {
+        "name": "Last Program Duration"
+      },
       "sensor_program_progress": {
         "name": "Program Progress"
       },
@@ -1691,8 +1703,6 @@
       "sensor_hob_zone_power_level": {
         "name": "Zone{group_name} Power Level",
         "state": {
-          "off": "Off",
-          "keepwarm": "KeepWarm",
           "10": "10",
           "15": "15",
           "20": "20",
@@ -1710,6 +1720,8 @@
           "80": "80",
           "85": "85",
           "90": "90",
+          "off": "Off",
+          "keepwarm": "KeepWarm",
           "boost1": "Boost 1",
           "boost2": "Boost 2"
         }
@@ -3412,11 +3424,11 @@
       "select_chiller_common_preset": {
         "name": "Chiller preset",
         "state": {
-          "meatfish": "29°F \uD83D\uDCA7 (Meat/Fish)",
-          "fruit": "32°F \uD83D\uDCA7 (Fruit)",
-          "vegetables": "32°F \uD83D\uDCA7\uD83D\uDCA7 (Vegetables)",
-          "beverages": "34°F \uD83D\uDCA7 (Beverages)",
-          "snacks": "40°F \uD83D\uDCA7 (Snacks/Misc.)",
+          "meatfish": "29°F 💧 (Meat/Fish)",
+          "fruit": "32°F 💧 (Fruit)",
+          "vegetables": "32°F 💧💧 (Vegetables)",
+          "beverages": "34°F 💧 (Beverages)",
+          "snacks": "40°F 💧 (Snacks/Misc.)",
           "custom": "Custom"
         }
       },
