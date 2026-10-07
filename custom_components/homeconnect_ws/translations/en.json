@@ -61,10 +61,10 @@
         "name": "CrystalDry"
       },
       "switch_extra_dry": {
-        "name": "Extra Dry"
+        "name": "Extra Dry Default"
       },
       "switch_speed_on_demand": {
-        "name": "Speed On Demand"
+        "name": "Speed on Demand Status"
       },
       "switch_info_light": {
         "name": "Info Light"
@@ -218,6 +218,9 @@
       },
       "switch_hob_energy_consumption_indication": {
         "name": "Energy Consumption indication"
+      },
+      "switch_vario_speed": {
+        "name": "VarioSpeed+"
       }
     },
     "binary_sensor": {
