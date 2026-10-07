@@ -23,12 +23,12 @@ from custom_components.homeconnect_ws.entity_descriptions.common import (
     generate_power_switch,
     generate_program,
 )
+from custom_components.homeconnect_ws.entity_descriptions.dishcare import (
+    DISHCARE_ENTITY_DESCRIPTIONS,
+)
 from custom_components.homeconnect_ws.entity_descriptions.refrigeration import (
     generate_internal_light,
     generate_internal_light_brightness,
-)
-from custom_components.homeconnect_ws.entity_descriptions.dishcare import (
-    DISHCARE_ENTITY_DESCRIPTIONS,
 )
 from custom_components.homeconnect_ws.helpers import merge_dicts
 from homeassistant.components.sensor import SensorDeviceClass
@@ -96,8 +96,6 @@ def test_get_available_entities(
             ],
         )
     ]
-
-
 
 
 def test_program_session_time_helpers() -> None:
