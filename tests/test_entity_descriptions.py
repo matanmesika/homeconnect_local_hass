@@ -16,6 +16,10 @@ from custom_components.homeconnect_ws.entity_descriptions import (
     HCSwitchEntityDescription,
 )
 from custom_components.homeconnect_ws.entity_descriptions.common import (
+    _expected_finish,
+    _session_duration,
+    _session_end,
+    _session_start,
     generate_power_switch,
     generate_program,
 )
@@ -89,6 +93,29 @@ def test_get_available_entities(
             ],
         )
     ]
+
+
+
+
+def test_program_session_time_helpers() -> None:
+    """Test timestamps and duration extracted from the latest session summary."""
+    entity = Mock(
+        value={
+            "start": "2026-10-07T06:26:05+00:00",
+            "end": "2026-10-07T07:34:44+00:00",
+        }
+    )
+
+    assert _session_start(entity).isoformat() == "2026-10-07T06:26:05+00:00"
+    assert _session_end(entity).isoformat() == "2026-10-07T07:34:44+00:00"
+    assert _session_duration(entity) == 4119
+
+
+def test_expected_finish_is_timezone_aware() -> None:
+    """Test calculated finish timestamps are valid Home Assistant timestamps."""
+    finish = _expected_finish(Mock(value=13500))
+    assert finish is not None
+    assert finish.tzinfo is not None
 
 
 POWER_SWITCH = {
