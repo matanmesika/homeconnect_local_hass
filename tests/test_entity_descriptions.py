@@ -27,6 +27,9 @@ from custom_components.homeconnect_ws.entity_descriptions.refrigeration import (
     generate_internal_light,
     generate_internal_light_brightness,
 )
+from custom_components.homeconnect_ws.entity_descriptions.dishcare import (
+    DISHCARE_ENTITY_DESCRIPTIONS,
+)
 from custom_components.homeconnect_ws.helpers import merge_dicts
 from homeassistant.components.sensor import SensorDeviceClass
 from homeassistant.components.switch import SwitchDeviceClass
@@ -349,3 +352,13 @@ def test_descriptions_have_english_name() -> None:
                 missing.append(f"{domain}.{key}")
 
     assert sorted(set(missing)) == []
+
+
+def test_dishwasher_vario_speed_option_is_writable_switch() -> None:
+    """Test VarioSpeed is sourced from the writable program option."""
+    description = next(
+        item
+        for item in DISHCARE_ENTITY_DESCRIPTIONS["switch"]
+        if item.key == "switch_vario_speed"
+    )
+    assert description.entity == "Dishcare.Dishwasher.Option.VarioSpeed"
