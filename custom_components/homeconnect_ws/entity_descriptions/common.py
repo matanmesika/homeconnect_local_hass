@@ -203,11 +203,15 @@ def _parse_session_timestamp(value: str | None) -> datetime | None:
 
 def _session_start(entity) -> datetime | None:
     """Return the latest program session start timestamp."""
+    if not isinstance(entity.value, dict):
+        return None
     return _parse_session_timestamp(entity.value.get("start"))
 
 
 def _session_end(entity) -> datetime | None:
     """Return the latest program session end timestamp."""
+    if not isinstance(entity.value, dict):
+        return None
     return _parse_session_timestamp(entity.value.get("end"))
 
 
