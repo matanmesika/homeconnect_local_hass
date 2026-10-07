@@ -362,3 +362,39 @@ def test_dishwasher_vario_speed_option_is_writable_switch() -> None:
         if item.key == "switch_vario_speed"
     )
     assert description.entity == "Dishcare.Dishwasher.Option.VarioSpeed"
+
+
+TIMING_DEVICE = DeviceDescription(
+    status=[
+        EntityDescription(
+            uid=625,
+            name="BSH.Common.Status.ProgramSessionSummary.Latest",
+            available=True,
+            access=Access.READ,
+        ),
+    ],
+    option=[
+        EntityDescription(
+            uid=544,
+            name="BSH.Common.Option.RemainingProgramTime",
+            available=True,
+            access=Access.READ,
+        ),
+    ],
+)
+
+
+async def test_program_timing_descriptions(
+    mock_homeconnect_appliance: MockApplianceType,
+) -> None:
+    """Test timing sensors are created only from profile features that exist."""
+    appliance = await mock_homeconnect_appliance(description=TIMING_DEVICE)
+    descriptions = entity_descriptions.get_available_entities(appliance)
+    keys = {description.key for description in descriptions["sensor"]}
+
+    assert "sensor_remaining_program_time" in keys
+    assert "sensor_expected_finish_time" in keys
+    assert "sensor_last_program_start" in keys
+    assert "sensor_last_program_end" in keys
+    assert "sensor_last_program_duration" in keys
+    assert "sensor_elapsed_program_time" not in keys
