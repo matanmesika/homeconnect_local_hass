@@ -22,6 +22,7 @@ from homeassistant.const import (
     EntityCategory,
     UnitOfTime,
 )
+from homeassistant.util import dt as dt_util
 from homeconnect_websocket.entities import Execution
 
 from .descriptions_definitions import (
@@ -193,7 +194,6 @@ def generate_temperature_unit(appliance: HomeAppliance) -> HCSelectEntityDescrip
     return None
 
 
-
 def _parse_session_timestamp(value: str | None) -> datetime | None:
     """Parse an ISO timestamp from a program session summary."""
     if not value:
@@ -231,7 +231,7 @@ def _expected_finish(entity) -> datetime | None:
     seconds = float(entity.value)
     if seconds < 0:
         return None
-    return datetime.now().astimezone() + timedelta(seconds=seconds)
+    return dt_util.now() + timedelta(seconds=seconds)
 
 
 COMMON_ENTITY_DESCRIPTIONS: _EntityDescriptionsDefinitionsType = {
